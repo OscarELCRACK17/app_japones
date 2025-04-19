@@ -77,7 +77,7 @@ class _QuizPageState extends State<QuizPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vocabulario Japonés'),
+        title: Text('Vocabulario Japonés de prueba'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
