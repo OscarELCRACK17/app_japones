@@ -4,6 +4,7 @@ import 'features/menu/quiz_page.dart';
 import 'features/menu/settings_page.dart';
 import 'features/menu/about_page.dart';
 import 'features/menu/mode_page.dart';
+import 'features/menu/list_page.dart';  
 
 void main() {
   runApp(MyApp());
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
         '/settings': (context) => SettingsPage(),
         '/about': (context) => AboutPage(),
         '/mode': (context) => ModePage(),
+        '/list': (context) => ListPage(),
       },
     );
   }
