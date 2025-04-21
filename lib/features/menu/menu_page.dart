@@ -1,76 +1,67 @@
 import 'package:flutter/material.dart';
 
-// Define la clase principal de la página MenuPage, que es un StatefulWidget.
 class MenuPage extends StatefulWidget {
   final Function(bool) onThemeChanged;
 
-  MenuPage({required this.onThemeChanged}); // Constructor que recibe una función para cambiar el tema
+  MenuPage({required this.onThemeChanged});
 
   @override
-  _MenuPageState createState() => _MenuPageState();  // Crea el estado de la página
+  _MenuPageState createState() => _MenuPageState();
 }
 
-// Define el estado de la clase MenuPage.
 class _MenuPageState extends State<MenuPage> {
-  bool _isDarkMode = false;  // Variable que maneja el estado del tema oscuro
+  bool _isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
-    // Obtener el tamaño de la pantalla para hacer el diseño adaptable
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    // Verifica si la pantalla es pequeña (usualmente para dispositivos móviles)
+    bool hideFooter = screenHeight < 480 || screenWidth < 300;
     bool isCompact = screenHeight < 640;
-
-    // Tamaños proporcionales para imagen, botones y fuentes dependiendo del tamaño de la pantalla
     double imageHeight = isCompact ? screenHeight * 0.15 : screenHeight * 0.18;
-    double imageWidth = imageHeight / 0.6;  // Ajuste para la relación de aspecto de la imagen
+    double imageWidth = imageHeight / 0.6;
 
-    double buttonWidth = screenWidth * 0.7;  // El ancho del botón será el 70% del ancho de la pantalla
-double maxButtonWidth = 350.0;  // Ancho máximo de los botones
+    double buttonWidth = screenWidth * 0.7;
+    double maxButtonWidth = 350.0;
 
-// Ajuste para pantallas medianas (600 a 900 píxeles)
-if (screenWidth >= 600 && screenWidth < 900) {
-  buttonWidth = screenWidth * 0.75;  // Aumenta el ancho de los botones a un 75% del ancho de la pantalla
-} 
-// Ajuste para pantallas más grandes (900 a 1299 píxeles)
-else if (screenWidth >= 900 && screenWidth < 2400) {
-  buttonWidth = screenWidth * 0.5;  // Aumenta el ancho de los botones a un 40% del ancho de la pantalla
-} 
-else if (buttonWidth > maxButtonWidth) {
-  buttonWidth = maxButtonWidth;  // Si el ancho excede el máximo, ajustarlo
-}
+    if (screenWidth >= 600 && screenWidth < 900) {
+      buttonWidth = screenWidth * 0.75;
+    } else if (screenWidth >= 900 && screenWidth < 2400) {
+      buttonWidth = screenWidth * 0.5;
+    }
 
-    double buttonHeight = isCompact ? screenHeight * 0.06 : screenHeight * 0.08;  // Ajuste de alto de botones dependiendo del tamaño de la pantalla
-    double titleFontSize = isCompact ? screenHeight * 0.04 : screenHeight * 0.05;  // Ajuste de tamaño de fuente para el título
-    double spacing = isCompact ? 8.0 : 16.0;  // Espaciado entre los elementos dependiendo del tamaño de la pantalla
-    double buttonSpacing = isCompact ? 6.0 : 12.0;  // Espaciado entre botones
+    if (buttonWidth > maxButtonWidth) {
+      buttonWidth = maxButtonWidth;
+    }
+
+    double buttonHeight = isCompact ? screenHeight * 0.06 : screenHeight * 0.08;
+    double titleFontSize = isCompact ? screenHeight * 0.04 : screenHeight * 0.05;
+    double spacing = isCompact ? 8.0 : 16.0;
+    double buttonSpacing = isCompact ? 6.0 : 12.0;
 
     return Scaffold(
-      // Barra superior de la aplicación (AppBar)
       appBar: AppBar(
         title: Text(
-          '日本語学ぶ',  // Título en japonés
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),  // Estilo del título
+          '日本語学ぶ',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
-        centerTitle: true,  // Centra el título en la barra
-        backgroundColor: Colors.red,  // Color de fondo de la barra
+        centerTitle: true,
+        backgroundColor: Colors.red,
       ),
+
       body: Container(
         child: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
               child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: constraints.maxHeight,
-                ),
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
                 child: IntrinsicHeight(
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center, // Cambié de spaceEvenly a center
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           // Imagen de la bandera
@@ -86,7 +77,7 @@ else if (buttonWidth > maxButtonWidth) {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          SizedBox(height: spacing), // Espacio entre la imagen y el título
+                          SizedBox(height: spacing),
                           // Título
                           FittedBox(
                             fit: BoxFit.scaleDown,
@@ -99,8 +90,8 @@ else if (buttonWidth > maxButtonWidth) {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(height: spacing), // Espacio entre el título y los botones
-                          // Botones
+                          SizedBox(height: spacing),
+                          // Botones del menú
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -126,83 +117,95 @@ else if (buttonWidth > maxButtonWidth) {
         ),
       ),
 
-      bottomNavigationBar: Container(
-          // Color de fondo del footer (igual al del header)
-        padding: const EdgeInsets.all(16.0),  // Padding alrededor del footer
-        child: Builder(
-          builder: (context) {
-            final screenWidth = MediaQuery.of(context).size.width;
-            final isTooNarrow = screenWidth < 126;  // Verifica si la pantalla es demasiado estrecha
+      // Footer con icono + switch (si hay suficiente espacio)
+      bottomNavigationBar: hideFooter
+          ? null
+          : Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Builder(
+                builder: (context) {
+                  final screenWidth = MediaQuery.of(context).size.width;
+                  final isTooNarrow = screenWidth < 126;
 
-            return isTooNarrow
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,  // Permite el desplazamiento horizontal si es necesario
-                    child: Row(
-                      children: [
-                        Icon(
-                          _isDarkMode ? Icons.nights_stay : Icons.wb_sunny,  // Icono para el modo oscuro
-                          color: _isDarkMode ? Colors.white : Colors.black,
-                        ),
-                        SizedBox(width: 10),
-                        Switch(
-                          value: _isDarkMode,  // Controla el estado del interruptor
-                          onChanged: (bool value) {
-                            setState(() {
-                              _isDarkMode = value;  // Cambia el estado del tema
-                              widget.onThemeChanged(value);  // Llama a la función que cambia el tema
-                            });
-                          },
-                        ),
-                      ],
-                    ),
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.start,  // Alineación de los elementos en el footer
-                    children: [
-                      Icon(
-                        _isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
-                        color: _isDarkMode ? Colors.white : Colors.black,
-                      ),
-                      SizedBox(width: 10),
-                      Switch(
-                        value: _isDarkMode,
-                        onChanged: (bool value) {
-                          setState(() {
-                            _isDarkMode = value;
-                            widget.onThemeChanged(value);
-                          });
-                        },
-                      ),
-                    ],
-                  );
-          },
-        ),
-      ),
+                  return isTooNarrow
+                      ? SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(children: _buildThemeToggle()),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: _buildThemeToggle(),
+                        );
+                },
+              ),
+            ),
+
+      // Icono + switch flotante si el footer está oculto
+      floatingActionButton: hideFooter
+          ? Container(
+              padding: EdgeInsets.only(left: 12, top: 12),
+              alignment: Alignment.topLeft,  // Establece la posición en la parte superior izquierda
+              child: FloatingActionButton(
+                onPressed: () {
+                  setState(() {
+                    _isDarkMode = !_isDarkMode;
+                    widget.onThemeChanged(_isDarkMode);
+                  });
+                },
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                child: Icon(
+                  _isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
+                  color: _isDarkMode ? Colors.white : Colors.black,
+                ),
+              ),
+            )
+          : null,
     );
   }
 
-  // Función para construir los botones
+  // Crea lista con icono y switch reutilizable (para footer o widget flotante)
+  List<Widget> _buildThemeToggle() {
+    return [
+      Icon(
+        _isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
+        color: _isDarkMode ? Colors.white : Colors.black,
+      ),
+      SizedBox(width: 10),
+      Switch(
+        value: _isDarkMode,
+        onChanged: (bool value) {
+          setState(() {
+            _isDarkMode = value;
+            widget.onThemeChanged(value);
+          });
+        },
+      ),
+    ];
+  }
+
+  // Crea un botón del menú con tamaño, color y estilo
   Widget _buildButton(BuildContext context, String text, String route, Color color, double width, double height) {
-    Color buttonColor = _isDarkMode && text == 'Settings' ? Colors.transparent : color;  // Condicional para color de fondo
-    Color borderColor = _isDarkMode && text == 'Settings' ? Colors.white : color;  // Condicional para el borde
-    Color textColor = Colors.white;  // Color del texto en los botones
+    Color buttonColor = _isDarkMode && text == 'Settings' ? Colors.transparent : color;
+    Color borderColor = _isDarkMode && text == 'Settings' ? Colors.white : color;
+    Color textColor = Colors.white;
 
     return ElevatedButton(
-      onPressed: () => Navigator.pushNamed(context, route),  // Navegar a la ruta correspondiente al hacer clic
+      onPressed: () => Navigator.pushNamed(context, route),
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColor,
         side: BorderSide(color: borderColor, width: 2),
-        minimumSize: Size(width, height),  // Tamaño mínimo de los botones
+        minimumSize: Size(width, height),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),  // Bordes redondeados
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
       child: Text(
         text,
         style: TextStyle(
-          fontSize: height * 0.3,  // Tamaño del texto proporcional al tamaño del botón
-          fontWeight: FontWeight.bold,  // Estilo en negrita
-          color: textColor,  // Color del texto
+          fontSize: height * 0.3,
+          fontWeight: FontWeight.bold,
+          color: textColor,
         ),
       ),
     );
