@@ -17,19 +17,17 @@ class _MenuPageState extends State<MenuPage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     bool hideFooter = screenHeight < 480 || screenWidth < 300;
     bool isCompact = screenHeight < 640;
+
     double imageHeight = isCompact ? screenHeight * 0.15 : screenHeight * 0.18;
     double imageWidth = imageHeight / 0.6;
 
-    double buttonWidth = screenWidth * 0.7;
+    // Ajustamos el tamaño de los botones dependiendo de la orientación
+    double buttonWidth = isLandscape ? screenWidth * 0.35 : screenWidth * 0.6;  // Más pequeño en horizontal
     double maxButtonWidth = 350.0;
-
-    if (screenWidth >= 600 && screenWidth < 900) {
-      buttonWidth = screenWidth * 0.75;
-    } else if (screenWidth >= 900 && screenWidth < 2400) {
-      buttonWidth = screenWidth * 0.5;
-    }
 
     if (buttonWidth > maxButtonWidth) {
       buttonWidth = maxButtonWidth;
@@ -38,7 +36,12 @@ class _MenuPageState extends State<MenuPage> {
     double buttonHeight = isCompact ? screenHeight * 0.06 : screenHeight * 0.08;
     double titleFontSize = isCompact ? screenHeight * 0.04 : screenHeight * 0.05;
     double spacing = isCompact ? 8.0 : 16.0;
-    double buttonSpacing = isCompact ? 6.0 : 12.0;
+    
+    // Reducimos el espacio entre los botones en modo horizontal
+    double buttonSpacing = 6.0;
+
+
+
 
     return Scaffold(
       appBar: AppBar(
@@ -49,7 +52,6 @@ class _MenuPageState extends State<MenuPage> {
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-
       body: Container(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -64,7 +66,7 @@ class _MenuPageState extends State<MenuPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          // Imagen de la bandera
+                          // Contenedor de la imagen de la bandera
                           Container(
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.black, width: 4),
@@ -78,7 +80,7 @@ class _MenuPageState extends State<MenuPage> {
                             ),
                           ),
                           SizedBox(height: spacing),
-                          // Título
+                          // Título central
                           FittedBox(
                             fit: BoxFit.scaleDown,
                             child: Text(
@@ -91,21 +93,34 @@ class _MenuPageState extends State<MenuPage> {
                             ),
                           ),
                           SizedBox(height: spacing),
-                          // Botones del menú
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
-                              SizedBox(height: buttonSpacing),
-                              _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
-                              SizedBox(height: buttonSpacing),
-                              _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
-                              SizedBox(height: buttonSpacing),
-                              _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
-                              SizedBox(height: buttonSpacing),
-                              _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
-                            ],
-                          ),
+                          // Los botones del menú se organizan dependiendo de la orientación y tamaño de la pantalla
+                          isLandscape && screenWidth < 900
+                              ? Wrap(
+                                  spacing: buttonSpacing,  // Espacio horizontal entre los botones
+                                  runSpacing: buttonSpacing,  // Espacio vertical entre los botones
+                                  alignment: WrapAlignment.center,
+                                  children: [
+                                    _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
+                                  ],
+                                )
+                              : Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
+                                    SizedBox(height: buttonSpacing),
+                                    _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
+                                    SizedBox(height: buttonSpacing),
+                                    _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
+                                    SizedBox(height: buttonSpacing),
+                                    _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
+                                    SizedBox(height: buttonSpacing),
+                                    _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
+                                  ],
+                                ),
                         ],
                       ),
                     ),
@@ -116,8 +131,6 @@ class _MenuPageState extends State<MenuPage> {
           },
         ),
       ),
-
-      // Footer con icono + switch (si hay suficiente espacio)
       bottomNavigationBar: hideFooter
           ? null
           : Container(
@@ -130,21 +143,19 @@ class _MenuPageState extends State<MenuPage> {
                   return isTooNarrow
                       ? SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Row(children: _buildThemeToggle()),
+                          child: Row(children: _buildThemeToggle()),  // Mostrar el toggle para cambiar el tema
                         )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: _buildThemeToggle(),
+                          children: _buildThemeToggle(),  // Mostrar el toggle para cambiar el tema
                         );
                 },
               ),
             ),
-
-      // Icono + switch flotante si el footer está oculto
       floatingActionButton: hideFooter
           ? Container(
               padding: EdgeInsets.only(left: 12, top: 12),
-              alignment: Alignment.topLeft,  // Establece la posición en la parte superior izquierda
+              alignment: Alignment.topLeft,  // Establecer la posición en la parte superior izquierda
               child: FloatingActionButton(
                 onPressed: () {
                   setState(() {
@@ -164,7 +175,6 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 
-  // Crea lista con icono y switch reutilizable (para footer o widget flotante)
   List<Widget> _buildThemeToggle() {
     return [
       Icon(
@@ -177,14 +187,14 @@ class _MenuPageState extends State<MenuPage> {
         onChanged: (bool value) {
           setState(() {
             _isDarkMode = value;
-            widget.onThemeChanged(value);
+            widget.onThemeChanged(value);  // Llamar al callback para cambiar el tema
           });
         },
       ),
     ];
   }
 
-  // Crea un botón del menú con tamaño, color y estilo
+  // Método para construir un botón del menú con tamaño, color y estilo
   Widget _buildButton(BuildContext context, String text, String route, Color color, double width, double height) {
     Color buttonColor = _isDarkMode && text == 'Settings' ? Colors.transparent : color;
     Color borderColor = _isDarkMode && text == 'Settings' ? Colors.white : color;
@@ -203,7 +213,7 @@ class _MenuPageState extends State<MenuPage> {
       child: Text(
         text,
         style: TextStyle(
-          fontSize: height * 0.3,
+          fontSize: height * 0.3,  // Tamaño del texto en relación al alto del botón
           fontWeight: FontWeight.bold,
           color: textColor,
         ),
