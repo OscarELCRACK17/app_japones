@@ -1,0 +1,17 @@
+# Ignorar el directorio de compilación
+build/
+
+# Ignorar archivos temporales de Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Ignorar configuraciones de IDEs
+.idea/
+.vscode/
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar caché de Flutter
+.cache/
