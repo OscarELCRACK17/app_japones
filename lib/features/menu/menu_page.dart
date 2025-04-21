@@ -28,10 +28,21 @@ class _MenuPageState extends State<MenuPage> {
     double imageWidth = imageHeight / 0.6;  // Ajuste para la relación de aspecto de la imagen
 
     double buttonWidth = screenWidth * 0.7;  // El ancho del botón será el 70% del ancho de la pantalla
-    double buttonHeight = isCompact ? screenHeight * 0.06 : screenHeight * 0.08;  // Ajuste de alto de botones dependiendo del tamaño de la pantalla
-    double maxButtonWidth = 350.0;  // Ancho máximo de los botones
-    if (buttonWidth > maxButtonWidth) buttonWidth = maxButtonWidth;  // Si el ancho excede el máximo, ajustarlo
+double maxButtonWidth = 350.0;  // Ancho máximo de los botones
 
+// Ajuste para pantallas medianas (600 a 900 píxeles)
+if (screenWidth >= 600 && screenWidth < 900) {
+  buttonWidth = screenWidth * 0.75;  // Aumenta el ancho de los botones a un 75% del ancho de la pantalla
+} 
+// Ajuste para pantallas más grandes (900 a 1299 píxeles)
+else if (screenWidth >= 900 && screenWidth < 2400) {
+  buttonWidth = screenWidth * 0.5;  // Aumenta el ancho de los botones a un 40% del ancho de la pantalla
+} 
+else if (buttonWidth > maxButtonWidth) {
+  buttonWidth = maxButtonWidth;  // Si el ancho excede el máximo, ajustarlo
+}
+
+    double buttonHeight = isCompact ? screenHeight * 0.06 : screenHeight * 0.08;  // Ajuste de alto de botones dependiendo del tamaño de la pantalla
     double titleFontSize = isCompact ? screenHeight * 0.04 : screenHeight * 0.05;  // Ajuste de tamaño de fuente para el título
     double spacing = isCompact ? 8.0 : 16.0;  // Espaciado entre los elementos dependiendo del tamaño de la pantalla
     double buttonSpacing = isCompact ? 6.0 : 12.0;  // Espaciado entre botones
@@ -47,68 +58,76 @@ class _MenuPageState extends State<MenuPage> {
         backgroundColor: Colors.red,  // Color de fondo de la barra
       ),
       body: Container(
-      color: Colors.blue,
-          child: SingleChildScrollView(  // Permite desplazamiento si el contenido no cabe en pantalla
-            child: Center(  // Asegura que todo el contenido se mantenga centrado
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),  // Padding alrededor del contenido
-                child: Column(
-                  
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,  // Distribuye los elementos de manera uniforme
-                  crossAxisAlignment: CrossAxisAlignment.center,  // Asegura que todo esté centrado horizontalmente
-                  children: [
-                    // Contenedor para la imagen de la bandera
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 4),  // Borde de la imagen
-                        borderRadius: BorderRadius.circular(12),  // Bordes redondeados
-                      ),
-                      child: Image.asset(
-                        'assets/images/flag_japan.png',  // Ruta de la imagen
-                        width: imageWidth,  // Ancho de la imagen
-                        height: imageHeight,  // Alto de la imagen
-                        fit: BoxFit.cover,  // Asegura que la imagen se recorte correctamente
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                ),
+                child: IntrinsicHeight(
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center, // Cambié de spaceEvenly a center
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          // Imagen de la bandera
+                          Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 4),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Image.asset(
+                              'assets/images/flag_japan.png',
+                              width: imageWidth,
+                              height: imageHeight,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: spacing), // Espacio entre la imagen y el título
+                          // Título
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              '日本語学ぶ',
+                              style: TextStyle(
+                                fontSize: titleFontSize,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          SizedBox(height: spacing), // Espacio entre el título y los botones
+                          // Botones
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
+                              SizedBox(height: buttonSpacing),
+                              _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
+                              SizedBox(height: buttonSpacing),
+                              _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
+                              SizedBox(height: buttonSpacing),
+                              _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
+                              SizedBox(height: buttonSpacing),
+                              _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: spacing),  // Espaciado entre la imagen y el título
-
-                    // Título de la página (en japonés)
-                    FittedBox(
-                      fit: BoxFit.scaleDown,  // Escala el texto para que no se desborde
-                      child: Text(
-                        '日本語学ぶ',  // Texto del título
-                        style: TextStyle(
-                          fontSize: titleFontSize,  // Tamaño del texto
-                          fontWeight: FontWeight.bold,  // Estilo en negrita
-                        ),
-                        textAlign: TextAlign.center,  // Alineación centrada
-                      ),
-                    ),
-                    SizedBox(height: spacing),  // Espaciado entre el título y los botones
-
-                    // Column con los botones
-                    Column(
-                      mainAxisSize: MainAxisSize.min,  // Minimiza el tamaño de la columna para ajustarse al contenido
-                      children: [
-                        _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),  // Botón "Play"
-                        SizedBox(height: buttonSpacing),  // Espaciado entre botones
-                        _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),  // Botón "Mode"
-                        SizedBox(height: buttonSpacing),
-                        _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),  // Botón "List"
-                        SizedBox(height: buttonSpacing),
-                        _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),  // Botón "About"
-                        SizedBox(height: buttonSpacing),
-                        _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),  // Botón "Settings"
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),  
+            );
+          },
+        ),
+      ),
+
       bottomNavigationBar: Container(
-        color: Colors.red,  // Color de fondo del footer (igual al del header)
+          // Color de fondo del footer (igual al del header)
         padding: const EdgeInsets.all(16.0),  // Padding alrededor del footer
         child: Builder(
           builder: (context) {
