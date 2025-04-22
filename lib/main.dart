@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
-import 'features/menu/menu_page.dart'; // Asegúrate de importar correctamente las páginas
+import 'package:flutter/services.dart';
+import 'core/utils/orientation_lock.dart';
+import 'features/menu/menu_page.dart';
 import 'features/menu/quiz_page.dart';
 import 'features/menu/settings_page.dart';
 import 'features/menu/about_page.dart';
 import 'features/menu/mode_page.dart';
-import 'features/menu/list_page.dart';  
+import 'features/menu/list_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Bloquear orientación vertical (portrait)
+  await lockPortraitOrientation();
+
   runApp(MyApp());
 }
 
@@ -16,12 +23,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isDarkMode = false; // Estado del modo oscuro
+  bool _isDarkMode = false;
 
-  // Función para manejar el cambio de tema
   void _toggleTheme(bool value) {
     setState(() {
-      _isDarkMode = value; // Cambiar el valor del tema
+      _isDarkMode = value;
     });
   }
 
@@ -29,8 +35,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Vocabulario Japonés',
-      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(), // Cambiar el tema según _isDarkMode
-      home: MenuPage(onThemeChanged: _toggleTheme), // Pasar la función que cambia el tema
+      debugShowCheckedModeBanner: false,
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      home: MenuPage(onThemeChanged: _toggleTheme),
       routes: {
         '/quiz': (context) => QuizPage(),
         '/settings': (context) => SettingsPage(),
