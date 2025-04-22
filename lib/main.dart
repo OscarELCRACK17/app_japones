@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Para bloquear la orientación
+import 'package:flutter/services.dart';
 
 // Importación de las páginas
 import 'features/menu/menu_page.dart';
@@ -41,29 +41,42 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Vocabulario Japonés',
       debugShowCheckedModeBanner: false,
-      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme: ThemeData.light().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          
+        ),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+        ),
+      ),
+      themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
       home: MenuPage(onThemeChanged: _toggleTheme),
       routes: {
         '/quiz': (context) => QuizPage(
-          onThemeChanged: _toggleTheme,
-          isDarkMode: _isDarkMode,
-        ),
+              onThemeChanged: _toggleTheme,
+              isDarkMode: _isDarkMode,
+            ),
         '/settings': (context) => SettingsPage(
-          onThemeChanged: _toggleTheme,
-          isDarkMode: _isDarkMode,
-        ),
+              onThemeChanged: _toggleTheme,
+              isDarkMode: _isDarkMode,
+            ),
         '/about': (context) => AboutPage(
-          onThemeChanged: _toggleTheme,
-          isDarkMode: _isDarkMode,
-        ),
+              onThemeChanged: _toggleTheme,
+              isDarkMode: _isDarkMode,
+            ),
         '/mode': (context) => ModePage(
-          onThemeChanged: _toggleTheme,
-          isDarkMode: _isDarkMode,
-        ),
+              onThemeChanged: _toggleTheme,
+              isDarkMode: _isDarkMode,
+            ),
         '/list': (context) => ListPage(
-          onThemeChanged: _toggleTheme,
-          isDarkMode: _isDarkMode,
-        ),
+              onThemeChanged: _toggleTheme,
+              isDarkMode: _isDarkMode,
+            ),
+         '/menu': (context) => MenuPage(onThemeChanged: _toggleTheme),     
       },
     );
   }

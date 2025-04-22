@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app_japones/core/utils/app_colors.dart';
 
 class MenuPage extends StatefulWidget {
   final Function(bool) onThemeChanged;
@@ -40,9 +41,6 @@ class _MenuPageState extends State<MenuPage> {
     // Reducimos el espacio entre los botones en modo horizontal
     double buttonSpacing = 6.0;
 
-
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -50,7 +48,8 @@ class _MenuPageState extends State<MenuPage> {
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: Colors.red,
+        automaticallyImplyLeading: false,
+        
       ),
       body: Container(
         child: LayoutBuilder(
@@ -69,7 +68,7 @@ class _MenuPageState extends State<MenuPage> {
                           // Contenedor de la imagen de la bandera
                           Container(
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 4),
+                              border: Border.all(color: AppColors.getBorderColor(context), width: 4), // Usando el método correcto
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Image.asset(
@@ -88,6 +87,7 @@ class _MenuPageState extends State<MenuPage> {
                               style: TextStyle(
                                 fontSize: titleFontSize,
                                 fontWeight: FontWeight.bold,
+                                color: AppColors.getTitleColor(context), // Usando el método correcto
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -100,25 +100,25 @@ class _MenuPageState extends State<MenuPage> {
                                   runSpacing: buttonSpacing,  // Espacio vertical entre los botones
                                   alignment: WrapAlignment.center,
                                   children: [
-                                    _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
-                                    _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
-                                    _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
-                                    _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
-                                    _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Play', '/quiz', buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Mode', '/mode', buttonWidth, buttonHeight),
+                                    _buildButton(context, 'List', '/list', buttonWidth, buttonHeight),
+                                    _buildButton(context, 'About', '/about', buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Settings', '/settings', buttonWidth, buttonHeight),
                                   ],
                                 )
                               : Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    _buildButton(context, 'Play', '/quiz', Colors.red, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Play', '/quiz', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'Mode', '/mode', Colors.green, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Mode', '/mode', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'List', '/list', Colors.orange, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'List', '/list', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'About', '/about', Colors.blue, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'About', '/about', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'Settings', '/settings', Colors.black, buttonWidth, buttonHeight),
+                                    _buildButton(context, 'Settings', '/settings', buttonWidth, buttonHeight),
                                   ],
                                 ),
                         ],
@@ -195,10 +195,10 @@ class _MenuPageState extends State<MenuPage> {
   }
 
   // Método para construir un botón del menú con tamaño, color y estilo
-  Widget _buildButton(BuildContext context, String text, String route, Color color, double width, double height) {
-    Color buttonColor = _isDarkMode && text == 'Settings' ? Colors.transparent : color;
-    Color borderColor = _isDarkMode && text == 'Settings' ? Colors.white : color;
-    Color textColor = Colors.white;
+  Widget _buildButton(BuildContext context, String text, String route, double width, double height) {
+    Color buttonColor = AppColors.getButtonColorByName(context, text);
+    Color borderColor = _isDarkMode ? AppColors.getBorderColor(context) : AppColors.getBorderColor(context); // Usando el método correcto
+     Color textColor = text == 'Settings' ? Colors.white : AppColors.getTextColor(context);
 
     return ElevatedButton(
       onPressed: () => Navigator.pushNamed(context, route),

@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "question": "¿Cómo se dice 'agua' en japonés?",
+    "options": ["みず", "たべもの", "くるま", "いぬ"],
+    "answer": "みず"
+  },
+  {
+    "id": 2,
+    "question": "¿Qué significa 'ねこ'?",
+    "options": ["Perro", "Gato", "Ratón", "Conejo"],
+    "answer": "Gato"
+  },
+  {
+    "id": 3,
+    "question": "¿Cuál es el hiragana de 'pan'?",
+    "options": ["パン", "さかな", "やさい", "ほん"],
+    "answer": "パン"
+  },
+  {
+    "id": 4,
+    "question": "¿Qué palabra representa 'libro'?",
+    "options": ["ほん", "すいか", "とけい", "てんき"],
+    "answer": "ほん"
+  },
+  {
+    "id": 5,
+    "question": "¿Qué significa 'ありがとう'?",
+    "options": ["Hola", "Adiós", "Gracias", "Por favor"],
+    "answer": "Gracias"
+  },
+  {
+    "id": 6,
+    "question": "¿Cómo se dice 'escuela' en japonés?",
+    "options": ["がっこう", "せんせい", "いえ", "ともだち"],
+    "answer": "がっこう"
+  },
+  {
+    "id": 7,
+    "question": "¿Qué significa 'ともだち'?",
+    "options": ["Familia", "Casa", "Amigo", "Comida"],
+    "answer": "Amigo"
+  },
+  {
+    "id": 8,
+    "question": "¿Cuál es el kanji de 'fuego'?",
+    "options": ["水", "木", "火", "土"],
+    "answer": "火"
+  },
+  {
+    "id": 9,
+    "question": "¿Qué fruta representa 'すいか'?",
+    "options": ["Manzana", "Melón", "Sandía", "Banana"],
+    "answer": "Sandía"
+  },
+  {
+    "id": 10,
+    "question": "¿Qué significa 'さようなら'?",
+    "options": ["Buenos días", "Buenas noches", "Adiós", "Hola"],
+    "answer": "Adiós"
+  },
+  {
+    "id": 11,
+    "question": "¿Cómo se escribe 'sol' en japonés?",
+    "options": ["月", "日", "星", "火"],
+    "answer": "日"
+  },
+  {
+    "id": 12,
+    "question": "¿Qué significa 'くるま'?",
+    "options": ["Avión", "Tren", "Bicicleta", "Auto"],
+    "answer": "Auto"
+  },
+  {
+    "id": 13,
+    "question": "¿Cuál es el kanji de 'árbol'?",
+    "options": ["木", "水", "山", "花"],
+    "answer": "木"
+  },
+  {
+    "id": 14,
+    "question": "¿Qué significa 'やさい'?",
+    "options": ["Carne", "Fruta", "Verdura", "Pan"],
+    "answer": "Verdura"
+  },
+  {
+    "id": 15,
+    "question": "¿Qué animal representa 'いぬ'?",
+    "options": ["Gato", "Pájaro", "Perro", "Conejo"],
+    "answer": "Perro"
+  },
+  {
+    "id": 16,
+    "question": "¿Cómo se dice 'gracias' formalmente en japonés?",
+    "options": ["ありがとう", "どうも", "おはよう", "ありがとうございます"],
+    "answer": "ありがとうございます"
+  },
+  {
+    "id": 17,
+    "question": "¿Qué significa 'せんせい'?",
+    "options": ["Estudiante", "Maestro", "Padre", "Doctor"],
+    "answer": "Maestro"
+  },
+  {
+    "id": 18,
+    "question": "¿Cuál es el kanji de 'montaña'?",
+    "options": ["川", "田", "山", "空"],
+    "answer": "山"
+  },
+  {
+    "id": 19,
+    "question": "¿Qué significa 'たべもの'?",
+    "options": ["Comida", "Bebida", "Dulce", "Cena"],
+    "answer": "Comida"
+  },
+  {
+    "id": 20,
+    "question": "¿Qué palabra representa 'reloj'?",
+    "options": ["ほん", "とけい", "くつ", "いす"],
+    "answer": "とけい"
+  },
+  {
+    "id": 21,
+    "question": "¿Cómo se dice 'día' en japonés?",
+    "options": ["日", "月", "年", "時"],
+    "answer": "日"
+  },
+  {
+    "id": 22,
+    "question": "¿Qué significa 'うさぎ'?",
+    "options": ["Perro", "Gato", "Conejo", "León"],
+    "answer": "Conejo"
+  },
+  {
+    "id": 23,
+    "question": "¿Cómo se escribe 'noche' en japonés?",
+    "options": ["日", "夜", "午前", "明日"],
+    "answer": "夜"
+  },
+  {
+    "id": 24,
+    "question": "¿Qué significa 'さくら'?",
+    "options": ["Cielo", "Mar", "Flor de cerezo", "Lluvia"],
+    "answer": "Flor de cerezo"
+  },
+  {
+    "id": 25,
+    "question": "¿Cuál es el kanji de 'agua'?",
+    "options": ["水", "火", "土", "木"],
+    "answer": "水"
+  },
+  {
+    "id": 26,
+    "question": "¿Qué animal representa 'きんぎょ'?",
+    "options": ["Pescado", "Pez dorado", "Cangrejo", "Tiburón"],
+    "answer": "Pez dorado"
+  },
+  {
+    "id": 27,
+    "question": "¿Cómo se dice 'futuro' en japonés?",
+    "options": ["未来", "過去", "現在", "朝"],
+    "answer": "未来"
+  },
+  {
+    "id": 28,
+    "question": "¿Qué significa 'きょう'?",
+    "options": ["Mañana", "Hoy", "Ayer", "Mes"],
+    "answer": "Hoy"
+  },
+  {
+    "id": 29,
+    "question": "¿Cómo se escribe 'mes' en japonés?",
+    "options": ["月", "日", "年", "時間"],
+    "answer": "月"
+  },
+  {
+    "id": 30,
+    "question": "¿Qué significa 'せかい'?",
+    "options": ["Mundo", "Tierra", "Cielo", "Mar"],
+    "answer": "Mundo"
+  },
+  {
+    "id": 31,
+    "question": "¿Qué palabra representa 'sol'?",
+    "options": ["太陽", "月", "星", "雲"],
+    "answer": "太陽"
+  },
+  {
+    "id": 32,
+    "question": "¿Cómo se dice 'comida' en japonés?",
+    "options": ["たべもの", "ほん", "ねこ", "ともだち"],
+    "answer": "たべもの"
+  },
+  {
+    "id": 33,
+    "question": "¿Qué significa 'へや'?",
+    "options": ["Habitación", "Calle", "Escuela", "Casa"],
+    "answer": "Habitación"
+  },
+  {
+    "id": 34,
+    "question": "¿Cómo se dice 'perro' en japonés?",
+    "options": ["ねこ", "いぬ", "うさぎ", "とり"],
+    "answer": "いぬ"
+  },
+  {
+    "id": 35,
+    "question": "¿Qué significa 'きもち'?",
+    "options": ["Felicidad", "Sentimiento", "Comida", "Tiempo"],
+    "answer": "Sentimiento"
+  },
+  {
+    "id": 36,
+    "question": "¿Cómo se escribe 'rojo' en japonés?",
+    "options": ["赤", "青", "緑", "黄"],
+    "answer": "赤"
+  },
+  {
+    "id": 37,
+    "question": "¿Qué animal representa 'とり'?",
+    "options": ["Perro", "Gato", "Pájaro", "Conejo"],
+    "answer": "Pájaro"
+  },
+  {
+    "id": 38,
+    "question": "¿Qué significa 'えんぴつ'?",
+    "options": ["Pluma", "Lápiz", "Borrador", "Marcador"],
+    "answer": "Lápiz"
+  },
+  {
+    "id": 39,
+    "question": "¿Cómo se dice 'feliz' en japonés?",
+    "options": ["うれしい", "かなしい", "おおきい", "わるい"],
+    "answer": "うれしい"
+  },
+  {
+    "id": 40,
+    "question": "¿Qué significa 'ちゅうごく'?",
+    "options": ["Japón", "China", "Corea", "India"],
+    "answer": "China"
+  },
+  {
+    "id": 41,
+    "question": "¿Cómo se dice 'ventana' en japonés?",
+    "options": ["ドア", "うち", "まど", "テーブル"],
+    "answer": "まど"
+  },
+  {
+    "id": 42,
+    "question": "¿Qué significa 'すみません'?",
+    "options": ["Gracias", "Lo siento", "Por favor", "Hola"],
+    "answer": "Lo siento"
+  },
+  {
+    "id": 43,
+    "question": "¿Cuál es el kanji de 'nieve'?",
+    "options": ["雪", "水", "風", "山"],
+    "answer": "雪"
+  },
+  {
+    "id": 44,
+    "question": "¿Qué significa 'まち'?",
+    "options": ["Calle", "Ciudad", "Casa", "Plaza"],
+    "answer": "Ciudad"
+  },
+  {
+    "id": 45,
+    "question": "¿Cómo se dice 'libro' en japonés?",
+    "options": ["ほん", "しんぶん", "ちず", "えいご"],
+    "answer": "ほん"
+  },
+  {
+    "id": 46,
+    "question": "¿Qué animal representa 'きんぎょ'?",
+    "options": ["Pescado", "Pez dorado", "Cangrejo", "Tiburón"],
+    "answer": "Pez dorado"
+  },
+  {
+    "id": 47,
+    "question": "¿Cómo se dice 'escuela' en japonés?",
+    "options": ["がっこう", "こうこう", "だいがく", "せんせい"],
+    "answer": "がっこう"
+  },
+  {
+    "id": 48,
+    "question": "¿Qué significa 'えいご'?",
+    "options": ["Español", "Inglés", "Francés", "Japonés"],
+    "answer": "Inglés"
+  },
+  {
+    "id": 49,
+    "question": "¿Cómo se dice 'tren' en japonés?",
+    "options": ["でんしゃ", "バス", "じてんしゃ", "くるま"],
+    "answer": "でんしゃ"
+  },
+  {
+    "id": 50,
+    "question": "¿Qué significa 'ありがとう'?",
+    "options": ["Gracias", "Perdón", "Hola", "Adiós"],
+    "answer": "Adiós"
+  }
+]

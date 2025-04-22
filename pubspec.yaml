@@ -57,3 +57,5 @@ flutter:
 
   assets:
     - assets/images/flag_japan.png
+    - assets/data/questions.json
+
