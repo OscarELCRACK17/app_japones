@@ -1,5 +1,10 @@
-# Ignorar el directorio de compilación
 build/
+!build/web/**
+build/app/
+build/linux/
+build/windows/
+build/macos/
+
 
 # Ignorar archivos temporales de Flutter
 .dart_tool/
