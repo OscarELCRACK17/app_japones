@@ -28,7 +28,10 @@ class _ModePageState extends State<ModePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mode'),
+        centerTitle: true,
+        title: const Text('日本語学ぶ',
+        style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.red,
       ),
       body: Center(

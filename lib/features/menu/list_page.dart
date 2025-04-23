@@ -28,7 +28,10 @@ class _ListPageState extends State<ListPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List'),
+        centerTitle: true,
+        title: const Text('日本語学ぶ',
+        style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.red,
       ),
       body: Center(

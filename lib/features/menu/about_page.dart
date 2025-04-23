@@ -23,19 +23,57 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-
     final bool hideFooter = screenHeight < 480 || screenWidth < 300;
+
+    // Factor de escala del texto
+    double textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About'),
+        centerTitle: true,
+        title: const Text(
+          '日本語学ぶ',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.red,
       ),
-      body: Center(
-        child: Text(
-          'Información sobre la aplicación',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double maxWidth = screenWidth * 0.95;
+          if (maxWidth > 600) maxWidth = 600;
+
+          double maxHeight = screenHeight > 800 ? 800 : screenHeight;
+
+          return Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: maxWidth,
+                maxHeight: maxHeight,
+              ),
+              child: Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                color: _isDarkMode ? Colors.grey[850] : Colors.white,
+                margin: const EdgeInsets.all(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildAboutSection('About', 'This app is designed to help you learn basic Japanese vocabulary interactively. It includes quizzes, word lists, and customized study modes.', textScaleFactor),
+                        _buildDivider(),
+                        _buildSimpleTextSection('Version 1.0.0', textScaleFactor),
+                        _buildDivider(),
+                        _buildSimpleTextSection('Developed by: OscarELCRACK17', textScaleFactor),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
       bottomNavigationBar: hideFooter
           ? null
@@ -75,7 +113,7 @@ class _AboutPageState extends State<AboutPage> {
         _isDarkMode ? Icons.nights_stay : Icons.wb_sunny,
         color: _isDarkMode ? Colors.white : Colors.black,
       ),
-      SizedBox(width: 10),
+      const SizedBox(width: 10),
       Switch(
         value: _isDarkMode,
         onChanged: (bool value) {
@@ -86,5 +124,49 @@ class _AboutPageState extends State<AboutPage> {
         },
       ),
     ];
+  }
+
+  // Método para construir una sección con título y descripción
+  Widget _buildAboutSection(String title, String description, double textScaleFactor) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 24 * textScaleFactor,
+            fontWeight: FontWeight.bold,
+            color: _isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+        SizedBox(height: 10),
+        Text(
+          description,
+          style: TextStyle(
+            fontSize: 16 * textScaleFactor,
+            color: _isDarkMode ? Colors.white70 : Colors.black87,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Método para crear una sección de texto sin descripción adicional
+  Widget _buildSimpleTextSection(String text, double textScaleFactor) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 16 * textScaleFactor,
+        fontWeight: FontWeight.bold,
+        color: _isDarkMode ? Colors.white : Colors.black,
+      ),
+    );
+  }
+
+  // Método para crear el Divider
+  Widget _buildDivider() {
+    return Divider(
+      color: _isDarkMode ? Colors.white24 : Colors.black12,
+    );
   }
 }

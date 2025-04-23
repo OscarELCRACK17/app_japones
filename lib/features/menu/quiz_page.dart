@@ -42,7 +42,10 @@ class _QuizPageState extends State<QuizPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz'),
+        centerTitle: true,
+        title: const Text('日本語学ぶ',
+        style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: AppColors.getPrimaryColor(context),
       ),
       body: FutureBuilder<List<Question>>(
