@@ -96,17 +96,33 @@ class AppColors {
   static Color getButtonColorByName(BuildContext context, String name) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
+     // Usamos traducciones y verificamos el idioma
     switch (name) {
       case 'Play':
+      case 'Jugar':   // Español
+      case '遊ぶ':    // Japonés
         return isDark ? Colors.red : Colors.redAccent;
+
       case 'Mode':
+      case 'Modo':    // Español
+      case 'モード':  // Japonés
         return isDark ? Colors.green : Colors.greenAccent;
+
       case 'List':
+      case 'Lista':   // Español
+      case 'リスト':  // Japonés
         return isDark ? Colors.orange : Colors.orangeAccent;
+
       case 'About':
+      case 'Acerca de':  // Español
+      case '情報':    // Japonés
         return isDark ? Colors.blue : Colors.blueAccent;
+
       case 'Settings':
+      case 'Configuraciones': // Español
+      case '設定':         // Japonés
         return isDark ? Colors.black : Colors.black;
+
       default:
         return getButtonColor(context); // Usa el color por defecto si no coincide
     }

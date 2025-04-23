@@ -1,0 +1,303 @@
+[
+    {
+      "id": 1,
+      "question": "How do you say 'water' in Japanese?",
+      "options": ["みず", "たべもの", "くるま", "いぬ"],
+      "answer": "みず"
+    },
+    {
+      "id": 2,
+      "question": "What does 'ねこ' mean?",
+      "options": ["Dog", "Cat", "Mouse", "Rabbit"],
+      "answer": "Cat"
+    },
+    {
+      "id": 3,
+      "question": "What is the hiragana for 'bread'?",
+      "options": ["パン", "さかな", "やさい", "ほん"],
+      "answer": "パン"
+    },
+    {
+      "id": 4,
+      "question": "Which word represents 'book'?",
+      "options": ["ほん", "すいか", "とけい", "てんき"],
+      "answer": "ほん"
+    },
+    {
+      "id": 5,
+      "question": "What does 'ありがとう' mean?",
+      "options": ["Hello", "Goodbye", "Thank you", "Please"],
+      "answer": "Thank you"
+    },
+    {
+      "id": 6,
+      "question": "How do you say 'school' in Japanese?",
+      "options": ["がっこう", "せんせい", "いえ", "ともだち"],
+      "answer": "がっこう"
+    },
+    {
+      "id": 7,
+      "question": "What does 'ともだち' mean?",
+      "options": ["Family", "House", "Friend", "Food"],
+      "answer": "Friend"
+    },
+    {
+      "id": 8,
+      "question": "Which kanji represents 'fire'?",
+      "options": ["水", "木", "火", "土"],
+      "answer": "火"
+    },
+    {
+      "id": 9,
+      "question": "Which fruit represents 'すいか'?",
+      "options": ["Apple", "Melon", "Watermelon", "Banana"],
+      "answer": "Watermelon"
+    },
+    {
+      "id": 10,
+      "question": "What does 'さようなら' mean?",
+      "options": ["Good morning", "Good night", "Goodbye", "Hello"],
+      "answer": "Goodbye"
+    },
+    {
+      "id": 11,
+      "question": "How do you write 'sun' in Japanese?",
+      "options": ["月", "日", "星", "火"],
+      "answer": "日"
+    },
+    {
+      "id": 12,
+      "question": "What does 'くるま' mean?",
+      "options": ["Plane", "Train", "Bicycle", "Car"],
+      "answer": "Car"
+    },
+    {
+      "id": 13,
+      "question": "Which kanji represents 'tree'?",
+      "options": ["木", "水", "山", "花"],
+      "answer": "木"
+    },
+    {
+      "id": 14,
+      "question": "What does 'やさい' mean?",
+      "options": ["Meat", "Fruit", "Vegetable", "Bread"],
+      "answer": "Vegetable"
+    },
+    {
+      "id": 15,
+      "question": "Which animal represents 'いぬ'?",
+      "options": ["Cat", "Bird", "Dog", "Rabbit"],
+      "answer": "Dog"
+    },
+    {
+      "id": 16,
+      "question": "How do you say 'thank you' formally in Japanese?",
+      "options": ["ありがとう", "どうも", "おはよう", "ありがとうございます"],
+      "answer": "ありがとうございます"
+    },
+    {
+      "id": 17,
+      "question": "What does 'せんせい' mean?",
+      "options": ["Student", "Teacher", "Father", "Doctor"],
+      "answer": "Teacher"
+    },
+    {
+      "id": 18,
+      "question": "Which kanji represents 'mountain'?",
+      "options": ["川", "田", "山", "空"],
+      "answer": "山"
+    },
+    {
+      "id": 19,
+      "question": "What does 'たべもの' mean?",
+      "options": ["Food", "Drink", "Sweet", "Dinner"],
+      "answer": "Food"
+    },
+    {
+      "id": 20,
+      "question": "Which word represents 'clock'?",
+      "options": ["ほん", "とけい", "くつ", "いす"],
+      "answer": "とけい"
+    },
+    {
+      "id": 21,
+      "question": "How do you say 'day' in Japanese?",
+      "options": ["日", "月", "年", "時"],
+      "answer": "日"
+    },
+    {
+      "id": 22,
+      "question": "What does 'うさぎ' mean?",
+      "options": ["Dog", "Cat", "Rabbit", "Lion"],
+      "answer": "Rabbit"
+    },
+    {
+      "id": 23,
+      "question": "How do you write 'night' in Japanese?",
+      "options": ["日", "夜", "午前", "明日"],
+      "answer": "夜"
+    },
+    {
+      "id": 24,
+      "question": "What does 'さくら' mean?",
+      "options": ["Sky", "Sea", "Cherry blossom", "Rain"],
+      "answer": "Cherry blossom"
+    },
+    {
+      "id": 25,
+      "question": "Which kanji represents 'water'?",
+      "options": ["水", "火", "土", "木"],
+      "answer": "水"
+    },
+    {
+      "id": 26,
+      "question": "Which animal represents 'きんぎょ'?",
+      "options": ["Fish", "Goldfish", "Crab", "Shark"],
+      "answer": "Goldfish"
+    },
+    {
+      "id": 27,
+      "question": "How do you say 'future' in Japanese?",
+      "options": ["未来", "過去", "現在", "朝"],
+      "answer": "未来"
+    },
+    {
+      "id": 28,
+      "question": "What does 'きょう' mean?",
+      "options": ["Tomorrow", "Today", "Yesterday", "Month"],
+      "answer": "Today"
+    },
+    {
+      "id": 29,
+      "question": "How do you write 'month' in Japanese?",
+      "options": ["月", "日", "年", "時間"],
+      "answer": "月"
+    },
+    {
+      "id": 30,
+      "question": "What does 'せかい' mean?",
+      "options": ["World", "Earth", "Sky", "Sea"],
+      "answer": "World"
+    },
+    {
+      "id": 31,
+      "question": "Which word represents 'sun'?",
+      "options": ["太陽", "月", "星", "雲"],
+      "answer": "太陽"
+    },
+    {
+      "id": 32,
+      "question": "How do you say 'food' in Japanese?",
+      "options": ["たべもの", "ほん", "ねこ", "ともだち"],
+      "answer": "たべもの"
+    },
+    {
+      "id": 33,
+      "question": "What does 'へや' mean?",
+      "options": ["Room", "Street", "School", "House"],
+      "answer": "Room"
+    },
+    {
+      "id": 34,
+      "question": "How do you say 'dog' in Japanese?",
+      "options": ["ねこ", "いぬ", "うさぎ", "とり"],
+      "answer": "いぬ"
+    },
+    {
+      "id": 35,
+      "question": "What does 'きもち' mean?",
+      "options": ["Happiness", "Feeling", "Food", "Time"],
+      "answer": "Feeling"
+    },
+    {
+      "id": 36,
+      "question": "How do you write 'red' in Japanese?",
+      "options": ["赤", "青", "緑", "黄"],
+      "answer": "赤"
+    },
+    {
+      "id": 37,
+      "question": "Which animal represents 'とり'?",
+      "options": ["Dog", "Cat", "Bird", "Rabbit"],
+      "answer": "Bird"
+    },
+    {
+      "id": 38,
+      "question": "What does 'えんぴつ' mean?",
+      "options": ["Pen", "Pencil", "Eraser", "Marker"],
+      "answer": "Pencil"
+    },
+    {
+      "id": 39,
+      "question": "How do you say 'happy' in Japanese?",
+      "options": ["うれしい", "かなしい", "おおきい", "わるい"],
+      "answer": "うれしい"
+    },
+    {
+      "id": 40,
+      "question": "What does 'ちゅうごく' mean?",
+      "options": ["Japan", "China", "Korea", "India"],
+      "answer": "China"
+    },
+        {
+          "id": 41,
+          "question": "How do you say 'window' in Japanese?",
+          "options": ["ドア", "うち", "まど", "テーブル"],
+          "answer": "まど"
+        },
+        {
+          "id": 42,
+          "question": "What does 'すみません' mean?",
+          "options": ["Thank you", "Sorry", "Please", "Hello"],
+          "answer": "Sorry"
+        },
+        {
+          "id": 43,
+          "question": "Which kanji represents 'snow'?",
+          "options": ["雪", "水", "風", "山"],
+          "answer": "雪"
+        },
+        {
+          "id": 44,
+          "question": "What does 'まち' mean?",
+          "options": ["Street", "City", "House", "Square"],
+          "answer": "City"
+        },
+        {
+          "id": 45,
+          "question": "How do you say 'book' in Japanese?",
+          "options": ["ほん", "しんぶん", "ちず", "えいご"],
+          "answer": "ほん"
+        },
+        {
+          "id": 46,
+          "question": "Which animal represents 'きんぎょ'?",
+          "options": ["Fish", "Goldfish", "Crab", "Shark"],
+          "answer": "Goldfish"
+        },
+        {
+          "id": 47,
+          "question": "How do you say 'school' in Japanese?",
+          "options": ["がっこう", "こうこう", "だいがく", "せんせい"],
+          "answer": "がっこう"
+        },
+        {
+          "id": 48,
+          "question": "What does 'えいご' mean?",
+          "options": ["Spanish", "English", "French", "Japanese"],
+          "answer": "English"
+        },
+        {
+          "id": 49,
+          "question": "How do you say 'train' in Japanese?",
+          "options": ["でんしゃ", "バス", "じてんしゃ", "くるま"],
+          "answer": "でんしゃ"
+        },
+        {
+          "id": 50,
+          "question": "What does 'ありがとう' mean?",
+          "options": ["Thank you", "Sorry", "Hello", "Goodbye"],
+          "answer": "Thank you"
+        }
+      ]
+      

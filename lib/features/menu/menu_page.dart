@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_japones/core/utils/app_colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Importar el archivo de localización
 
 class MenuPage extends StatefulWidget {
   final Function(bool) onThemeChanged;
@@ -15,6 +16,7 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appLoc = AppLocalizations.of(context)!;  // Obtenemos las localizaciones
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -49,7 +51,6 @@ class _MenuPageState extends State<MenuPage> {
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        
       ),
       body: Container(
         child: LayoutBuilder(
@@ -100,25 +101,25 @@ class _MenuPageState extends State<MenuPage> {
                                   runSpacing: buttonSpacing,  // Espacio vertical entre los botones
                                   alignment: WrapAlignment.center,
                                   children: [
-                                    _buildButton(context, 'Play', '/quiz', buttonWidth, buttonHeight),
-                                    _buildButton(context, 'Mode', '/mode', buttonWidth, buttonHeight),
-                                    _buildButton(context, 'List', '/list', buttonWidth, buttonHeight),
-                                    _buildButton(context, 'About', '/about', buttonWidth, buttonHeight),
-                                    _buildButton(context, 'Settings', '/settings', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.play, '/quiz', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.mode, '/mode', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.list, '/list', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.about, '/about', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.settings, '/settings', buttonWidth, buttonHeight),
                                   ],
                                 )
                               : Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    _buildButton(context, 'Play', '/quiz', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.play, '/quiz', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'Mode', '/mode', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.mode, '/mode', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'List', '/list', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.list, '/list', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'About', '/about', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.about_button, '/about', buttonWidth, buttonHeight),
                                     SizedBox(height: buttonSpacing),
-                                    _buildButton(context, 'Settings', '/settings', buttonWidth, buttonHeight),
+                                    _buildButton(context, appLoc.settings, '/settings', buttonWidth, buttonHeight),
                                   ],
                                 ),
                         ],
@@ -198,7 +199,15 @@ class _MenuPageState extends State<MenuPage> {
   Widget _buildButton(BuildContext context, String text, String route, double width, double height) {
     Color buttonColor = AppColors.getButtonColorByName(context, text);
     Color borderColor = _isDarkMode ? AppColors.getBorderColor(context) : AppColors.getBorderColor(context); // Usando el método correcto
-     Color textColor = text == 'Settings' ? Colors.white : AppColors.getTextColor(context);
+     // Aquí ajustamos el color del texto solo para "Settings" en modo claro
+  Color textColor;
+  if (text == 'Settings' || text == 'Configuraciones' || text == '設定') {
+    // En modo claro, hacemos el texto blanco
+    textColor = Theme.of(context).brightness == Brightness.light ? Colors.white : AppColors.getTextColor(context);
+  } else {
+    // Para otros botones, usamos el color de texto por defecto
+    textColor = AppColors.getTextColor(context);
+  }
 
     return ElevatedButton(
       onPressed: () => Navigator.pushNamed(context, route),

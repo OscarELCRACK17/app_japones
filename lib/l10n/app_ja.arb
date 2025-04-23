@@ -1,0 +1,23 @@
+{
+  "@@locale": "ja",
+  "settings": "設定",
+  "language": "言語",
+  "sound": "音",
+  "fontSize": "フォントサイズ",
+  "language_english": "英語",
+  "language_spanish": "スペイン語",
+  "language_japanese": "日本語",
+  "sound_on": "オン",
+  "sound_off": "オフ",
+  "font_size_label": "フォントサイズ",
+  "about": "このアプリについて",
+  "aboutDescription": "このアプリは、日本語の基本的な語彙をインタラクティブに学習する手助けをするために設計されています。クイズ、単語リスト、カスタマイズされた学習モードが含まれています。",
+  "version": "バージョン 1.0.0",
+  "developer": "開発者: OscarELCRACK17",
+  "play": "遊ぶ",
+  "mode": "モード",
+  "list": "リスト",
+  "quiz": "クイズ",
+  "about_button": "情報",
+  "settings_button": "設定"
+}

@@ -1,0 +1,23 @@
+{
+  "@@locale": "es",
+  "settings": "Configuraciones",
+  "language": "Idioma",
+  "sound": "Sonido",
+  "fontSize": "Tamaño de fuente",
+  "language_english": "Inglés",
+  "language_spanish": "Español",
+  "language_japanese": "Japonés",
+  "sound_on": "Encendido",
+  "sound_off": "Apagado",
+  "font_size_label": "Tamaño de fuente",
+  "about": "Acerca de",
+  "aboutDescription": "Esta aplicación está diseñada para ayudarte a aprender vocabulario básico de japonés de forma interactiva. Incluye cuestionarios, listas de palabras y modos de estudio personalizados.",
+  "version": "Versión 1.0.0",
+  "developer": "Desarrollado por: OscarELCRACK17",
+  "play": "Jugar",
+  "mode": "Modo",
+  "list": "Lista",
+  "quiz": "Cuestionario",
+  "about_button": "Acerca de",
+  "settings_button": "Ajustes"
+}

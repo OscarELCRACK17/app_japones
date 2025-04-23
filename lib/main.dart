@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 // Importación de las páginas
 import 'features/menu/menu_page.dart';
@@ -9,19 +12,29 @@ import 'features/menu/about_page.dart';
 import 'features/menu/mode_page.dart';
 import 'features/menu/list_page.dart';
 
+// Importa tu LocaleProvider
+import 'core/utils/locale_provider.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Bloqueamos la orientación en vertical (como Duolingo)
+  // Bloquear orientación vertical (como Duolingo)
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -29,7 +42,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   bool _isDarkMode = false;
 
-  // Función para manejar el cambio de tema
+  // Función para cambiar el tema
   void _toggleTheme(bool value) {
     setState(() {
       _isDarkMode = value;
@@ -38,13 +51,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Obtener el LocaleProvider desde el contexto
+    final localeProvider = Provider.of<LocaleProvider>(context);
+
     return MaterialApp(
       title: 'Vocabulario Japonés',
       debugShowCheckedModeBanner: false,
+
+      // Temas claro y oscuro
       theme: ThemeData.light().copyWith(
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.red,
-          
         ),
       ),
       darkTheme: ThemeData.dark().copyWith(
@@ -54,7 +71,21 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: _isDarkMode ? ThemeMode.dark : ThemeMode.light,
+
+      // Internacionalización
+      locale: localeProvider.locale, // Usamos el idioma desde el LocaleProvider
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
+
+      // Página de inicio
       home: MenuPage(onThemeChanged: _toggleTheme),
+
+      // Rutas
       routes: {
         '/quiz': (context) => QuizPage(
               onThemeChanged: _toggleTheme,
@@ -76,7 +107,7 @@ class _MyAppState extends State<MyApp> {
               onThemeChanged: _toggleTheme,
               isDarkMode: _isDarkMode,
             ),
-         '/menu': (context) => MenuPage(onThemeChanged: _toggleTheme),     
+        '/menu': (context) => MenuPage(onThemeChanged: _toggleTheme),
       },
     );
   }

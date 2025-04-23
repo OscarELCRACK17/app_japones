@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "settings": "Settings",
+  "language": "Language",
+  "sound": "Sound",
+  "fontSize": "Font Size",
+  "language_english": "English",
+  "language_spanish": "Spanish",
+  "language_japanese": "Japanese",
+  "sound_on": "On",
+  "sound_off": "Off",
+  "font_size_label": "Font size",
+  "about": "About",
+  "aboutDescription": "This app is designed to help you learn basic Japanese vocabulary interactively. It includes quizzes, word lists, and customized study modes.",
+  "version": "Version 1.0.0",
+  "developer": "Developed by: OscarELCRACK17",
+  "play": "Play",
+  "mode": "Mode",
+  "list": "List",
+  "quiz": "Quiz",
+  "about_button": "About",
+  "settings_button": "Settings"
+}

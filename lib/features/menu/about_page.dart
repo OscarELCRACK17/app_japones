@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Importa las localizaciones
 
 class AboutPage extends StatefulWidget {
   final Function(bool)? onThemeChanged;
@@ -21,6 +22,7 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
+    final appLoc = AppLocalizations.of(context)!;  // Accede a las traducciones
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     final bool hideFooter = screenHeight < 480 || screenWidth < 300;
@@ -31,7 +33,7 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           '日本語学ぶ',
           style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
         ),
@@ -61,11 +63,11 @@ class _AboutPageState extends State<AboutPage> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildAboutSection('About', 'This app is designed to help you learn basic Japanese vocabulary interactively. It includes quizzes, word lists, and customized study modes.', textScaleFactor),
+                        _buildAboutSection(appLoc.about, appLoc.aboutDescription, textScaleFactor),
                         _buildDivider(),
-                        _buildSimpleTextSection('Version 1.0.0', textScaleFactor),
+                        _buildSimpleTextSection(appLoc.version, textScaleFactor),
                         _buildDivider(),
-                        _buildSimpleTextSection('Developed by: OscarELCRACK17', textScaleFactor),
+                        _buildSimpleTextSection(appLoc.developer, textScaleFactor),
                       ],
                     ),
                   ),

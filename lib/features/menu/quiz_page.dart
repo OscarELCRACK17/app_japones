@@ -166,7 +166,7 @@ class _QuizPageState extends State<QuizPage> {
       bottomNavigationBar: hideFooter
           ? null
           : Container(
-              color: AppColors.getPrimaryColor(context),
+              
               height: MediaQuery.of(context).size.height * 0.10,
               padding: const EdgeInsets.all(16.0),
               child: Builder(
